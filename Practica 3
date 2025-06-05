@@ -1,0 +1,31 @@
+# Practica 3
+
+#Verificar discos conectados
+
+sudo fdisk -l
+
+# Formatear nuevo disco como ext4
+sudo mkfs.ext4 /dev/sdb
+
+# Crear carpeta en escritorio y montar el disco
+mkdir ~/Escritorio/Disco20GB
+sudo mount /dev/sdb ~/Escritorio/Disco20GB
+
+# Crear archivo en la carpeta montada
+cd ~/Escritorio/Disco20GB
+sudo touch AdrianAlcantara.txt
+
+# Salir del directorio y desmontar el disco
+cd ~
+sudo umount /dev/sdb
+
+# (Si da error: target is busy)
+sudo umount -l /dev/sdb
+
+# Crear nuevo punto de montaje y montar allí
+sudo mkdir /mnt/disco
+sudo mount /dev/sdb /mnt/disco
+
+# Verificar que el archivo aún existe
+cd /mnt/disco
+ls
