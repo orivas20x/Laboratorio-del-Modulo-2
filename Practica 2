@@ -1,0 +1,24 @@
+# Práctica 2 - Programación de tareas en Linux (Parrot OS)
+
+Práctica 2: Programación de tareas
+
+# 1. Crear trabajo cron que actualice el sistema todos los días a las 11 p.m
+echo "Agregando tarea cron para actualizar sistema a las 11 p.m todos los días..."
+(crontab -l 2>/dev/null; echo "0 23 * * * sudo apt update && sudo apt upgrade -y") | crontab -
+
+# 2. Programar reinicio del sistema todos los domingos a las 3 a.m
+echo "Agregando tarea cron para reiniciar el sistema los domingos a las 3 a.m..."
+(crontab -l 2>/dev/null; echo "0 3 * * 0 sudo reboot") | crontab -
+
+# 3. Mostrar contenido de /tmp antes
+echo "Contenido de /tmp antes de ejecutar at:"
+ls /tmp
+
+# 4. Programar tarea con 'at' para eliminar contenido de /tmp en 1 minuto
+echo "Programando eliminación de /tmp dentro de 1 minuto con at..."
+echo "rm -rf /tmp/*" | at now + 1 minute
+
+"Tarea programada. Espera 1 minuto para ver los resultados."
+
+
+# Nota: La verificación final (ls /tmp) se debe hacer manualmente después de 1 minuto
