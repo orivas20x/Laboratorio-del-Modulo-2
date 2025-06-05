@@ -1,0 +1,31 @@
+# Práctica 1: Instalación y eliminación de bashtop
+
+# 1. Actualizar sistema
+sudo apt update && sudo apt upgrade -y
+
+# 2. Ver repositorios en uso
+cat /etc/apt/sources.list
+ls /etc/apt/sources.list.d/
+
+# 3. Buscar bashtop
+apt search bashtop
+
+# 4. Instalar desde GitHub
+sudo apt install git build-essential -y
+
+en caso de que no exista el repositorio clonar con el siguiente comando y link
+
+git clone https://github.com/aristocratos/bashtop.git
+cd bashtop
+sudo make install
+
+# 5. Ejecutar bashtop
+/usr/local/bin/bashtop
+
+# 6. Desinstalar manualmente
+sudo rm /usr/local/bin/bashtop
+cd ~
+rm -rf bashtop
+
+# 7. Limpiar dependencias
+sudo apt autoremove -y
